@@ -1,0 +1,68 @@
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+  </head>
+  <style>
+
+    #id1{
+   width: 10%;
+   background-color: #5e71ff;
+   color: white;
+   padding: 14px 20px;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+}
+
+   div{
+
+    text-align:center;
+   }
+
+
+
+  </style>
+  <body>
+    <div>
+    <input type="button" onclick="test1()" id="id1"name="btn" value="LIVE SCORE">
+  </div>
+  <div id="abc">
+
+  </div>
+  </body>
+  <script >
+   function test1()
+   {
+    var xhr=new XMLHttpRequest();
+    xhr.open("GET","https://cricapi.com/api/matchCalendar?apikey=ZiYXoAOSxXMWfVoQ5MfZFhZXFWq2");
+    xhr.onreadystatechange=test;
+    function test()
+    {
+      if(this.status==200 && this.readyState == 4)
+      {
+        console.log("hi")
+        var res_data= JSON.parse(this.responseText)
+        console.log(res_data)
+        for(var i=0;i<5;i++)
+        {
+          var divv=document.createElement("div");
+          var date1=document.createElement("p");
+          var name=document.createElement("p");
+          var br=document.createElement("hr");
+          divv.appendChild(date1);
+          divv.appendChild(name);
+          divv.appendChild(br);
+          document.getElementById('abc').appendChild(divv);
+          date1.innerHTML="DATE - - "+res_data.data[i].date;
+          name.innerHTML="CURRENT MATCH STATUS - - "+res_data.data[i].name;
+          }
+       }
+    }
+
+  xhr.send();
+  }
+  </script>
+  </html>

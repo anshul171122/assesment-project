@@ -1,0 +1,74 @@
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+  </head>
+  <style>
+
+    #id1{
+   width: 10%;
+   background-color: #5e71ff;
+   color: white;
+   padding: 14px 20px;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+}
+
+   div{
+
+    text-align:center;
+   }
+
+
+
+  </style>
+  <body>
+    <div>
+    <input type="button" onclick="test1()" id="id1"name="btn" value="MATCH RESULT">
+  </div>
+  <div id="abc">
+
+  </div>
+</body>
+<script >
+  function test1()
+  {
+   var xhr=new XMLHttpRequest();
+   xhr.open("GET","https://cricapi.com/api/matches?apikey=ZiYXoAOSxXMWfVoQ5MfZFhZXFWq2");
+   xhr.onreadystatechange=test;
+   function test()
+   {
+     if(this.status==200 && this.readyState == 4)
+     {
+       console.log("hi")
+       var res_data= JSON.parse(this.responseText)
+       console.log(res_data)
+       for(var i=0;i<5;i++)
+       {
+         var divv=document.createElement("div");
+         var date=document.createElement("p");
+         var toss_winner_team=document.createElement("p");
+         var type=document.createElement("p")
+         var winner_team=document.createElement("p");
+         var br=document.createElement("hr");
+         divv.appendChild(date);
+         divv.appendChild(toss_winner_team);
+         divv.appendChild(type);
+         divv.appendChild(winner_team);
+         divv.appendChild(br);
+         document.getElementById('abc').appendChild(divv);
+         date.innerHTML="DATE - - "+res_data.matches[i].date;
+         toss_winner_team.innerHTML=" TOSS WINNER - - "+res_data.matches[i].toss_winner_team;
+         type.innerHTML="MATCH TYPE - - "+res_data.matches[i].type;
+         winner_team.innerHTML="WINNING TEAM - - "+res_data.matches[i].winner_team;
+       }
+      }
+   }
+
+ xhr.send();
+}
+</script>
+</html>

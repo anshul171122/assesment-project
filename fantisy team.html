@@ -1,0 +1,111 @@
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+  </head>
+  <style>
+
+    #id1{
+   width: 20%;
+   background-color: #5e71ff;
+   color: white;
+   padding: 14px 20px;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+}
+
+   div{
+
+    text-align:center;
+   }
+
+
+
+  </style>
+  <body>
+    <div>
+    <input type="button" onclick="test1()"  id="id1"name="btn" value="FANTASY TEAM PREDICTION">
+  </div>
+  <div id="abc">
+    </div>
+  </body>
+  <script >
+   function test1()
+   {
+    var xhr=new XMLHttpRequest();
+    xhr.open("GET","https://cricapi.com/api/fantasySquad?apikey=ZiYXoAOSxXMWfVoQ5MfZFhZXFWq2&unique_id=1034809");
+    xhr.onreadystatechange=test;
+    function test()
+    {
+      if(this.status==200 && this.readyState == 4)
+      {
+        console.log("hi")
+        var res_data= JSON.parse(this.responseText)
+        console.log(res_data)
+         console.log(res_data.squad[0].players[0].name)
+        for(var i=0;i<2;i++)
+        {
+          var divv=document.createElement("div");
+          var namet=document.createElement("p");
+          var pname1=document.createElement("p");
+          var pname2=document.createElement("p");
+          var pname3=document.createElement("p");
+          var pname4=document.createElement("p");
+          var pname5=document.createElement("p");
+          var pname6=document.createElement("p");
+          var pname7=document.createElement("p");
+          var pname8=document.createElement("p");
+          var pname9=document.createElement("p");
+          var pname10=document.createElement("p");
+          var pname11=document.createElement("p");
+          var pname12=document.createElement("p");
+          var pname13=document.createElement("p");
+          var pname14=document.createElement("p");
+          var pname15=document.createElement("p");
+          var br=document.createElement("hr");
+          divv.appendChild(namet);
+          divv.appendChild(pname1);
+          divv.appendChild(pname2);
+          divv.appendChild(pname3);
+          divv.appendChild(pname4);
+          divv.appendChild(pname5);
+          divv.appendChild(pname6);
+          divv.appendChild(pname7);
+          divv.appendChild(pname8);
+          divv.appendChild(pname9);
+          divv.appendChild(pname10);
+          divv.appendChild(pname11);
+          divv.appendChild(pname12);
+          divv.appendChild(pname13);
+          divv.appendChild(pname14);
+          divv.appendChild(pname15);
+          divv.appendChild(br);
+          document.getElementById('abc').appendChild(divv);
+          namet.innerHTML="TEAM NAME - - "+res_data.squad[i].name;
+          pname1.innerHTML="PLAYER NAME - - "+res_data.squad[i].players[0].name;
+          pname2.innerHTML="PLAYER NAME - - "+res_data.squad[i].players[1].name;
+          pname3.innerHTML="PLAYER NAME - - "+res_data.squad[i].players[2].name;
+          pname4.innerHTML="PLAYER NAME - - "+res_data.squad[i].players[3].name;
+          pname5.innerHTML="PLAYER NAME - - "+res_data.squad[i].players[4].name;
+          pname6.innerHTML="PLAYER NAME - - "+res_data.squad[i].players[5].name;
+          pname7.innerHTML="PLAYER NAME - - "+res_data.squad[i].players[6].name;
+          pname8.innerHTML="PLAYER NAME - - "+res_data.squad[i].players[7].name;
+          pname9.innerHTML="PLAYER NAME - - "+res_data.squad[i].players[8].name;
+          pname10.innerHTML="PLAYER NAME - - "+res_data.squad[i].players[9].name;
+          pname11.innerHTML="PLAYER NAME - - "+res_data.squad[i].players[10].name;
+          pname12.innerHTML="PLAYER NAME - - "+res_data.squad[i].players[11].name;
+          pname13.innerHTML="PLAYER NAME - - "+res_data.squad[i].players[12].name;
+          pname14.innerHTML="PLAYER NAME - - "+res_data.squad[i].players[13].name;
+          pname15.innerHTML="PLAYER NAME - - "+res_data.squad[i].players[14].name;
+
+          }
+       }
+    }
+
+  xhr.send();
+  }
+  </script>
+  </html>
